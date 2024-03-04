@@ -41,3 +41,6 @@ const nums3 = [0, 0];
 console.log(productExceptSelf(nums1));
 console.log(productExceptSelf(nums2));
 console.log(productExceptSelf(nums3));
+
+// 1,           1(1),     2(1, 2), 6(1, 2, 3)
+// 24(2, 3, 4), 12(3, 4), 4(4),    1
