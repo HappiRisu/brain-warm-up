@@ -38,9 +38,41 @@ const nums1 = [1, 2, 3, 4];
 const nums2 = [-1, 1, 0, -3, 3];
 const nums3 = [0, 0];
 
-console.log(productExceptSelf(nums1));
-console.log(productExceptSelf(nums2));
-console.log(productExceptSelf(nums3));
+// console.log(productExceptSelf(nums1));
+// console.log(productExceptSelf(nums2));
+// console.log(productExceptSelf(nums3));
 
 // 1,           1(1),     2(1, 2), 6(1, 2, 3)
 // 24(2, 3, 4), 12(3, 4), 4(4),    1
+
+
+
+// Input: nums = [1,2,3,4]
+// Output: [24,12,8,6]
+
+//   1      1   1*2   1*2*3 
+// 2*3*4   3*4   4      1
+//  24      12   8      6
+//[1, 1, 2, 6]
+//[24, 12, 4, 1]
+// 24 12 8 6
+
+
+const osarai = (nums) => {
+  let result = [];
+  let prefix = 1;
+  
+  for(let i = 0; i < nums.length; i++){
+    result[i] = prefix;// 1 1 2 6
+    prefix *= nums[i]; 
+  }
+
+  let suffix = 1;
+  for(let i = nums.length - 1; i >= 0; i--){
+    result[i] *= suffix;
+    suffix *= nums[i];
+  }
+  return result;
+}
+
+console.log(osarai([1, 2, 3, 4]))

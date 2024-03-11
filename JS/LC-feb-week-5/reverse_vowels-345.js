@@ -22,7 +22,7 @@ var reverseVowels = function (s) {
   return splitS.join('');
 };
 
-console.log(reverseVowels(s));
+// console.log(reverseVowels(s));
 
 //other answer
 var reverseVowels = function (s) {
@@ -47,3 +47,31 @@ var reverseVowels = function (s) {
   }
   return arr.join('');
 };
+
+
+let testWord = "hello";
+
+const osarai = (s) => {
+  let left = 0;
+  let right = s.length - 1;
+  let arr = s.split("");
+  let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  while(left < right){
+    if(vowels.indexOf(arr[left]) !== -1 && vowels.indexOf(arr[right]) !== -1){
+      [arr[right],arr[left]] = [arr[left], arr[right]];
+      ++left;
+      --right;
+    }
+    if(vowels.indexOf(arr[left]) == -1){
+      left++;
+    }
+    if(vowels.indexOf(arr[right]) == -1){
+      right--;
+    }
+  }
+
+  return arr.join("")
+}
+
+console.log(osarai(testWord));
+

@@ -36,28 +36,33 @@ const isPlot = (flowerbed, index) => {
 const flowerbed = [1, 0, 0, 0, 0, 0, 0, 1];
 const n = 2;
 
-// console.log(canPlaceFlowers(flowerbed, n));
 
-// another answer 아직 이해 못함.
-var canPlaceFlowers2 = function (flowerbed, n) {
-  let current = 0; //
-  const size = flowerbed.length; // 꽃밭의 길이
 
-  for (var i = 0; i <= size; i++) {
-    if (i < size && flowerbed[i] == 0) {
-      // 1. i가 배열안에 있는지 확인 2. 0인지 확인
-      current++;
-      if (i == 0) current++;
-      if (i == size - 1) current++;
+const osarai = (flowerbed, n) => {
 
-      console.log('current -if : ', current);
-    } else {
-      n -= Math.trunc((current - 1) / 2);
-      if (n <= 0) return true;
-      current = 0;
+  const prev = -1;
+  const next = 1;
+  let count = 0;
 
-      console.log('current -else : ', current);
+  for(let i = 0; i < flowerbed.length; i++){
+    console.log(canPlant(flowerbed, prev + i), canPlant(flowerbed, i), canPlant(flowerbed, next + i))
+    if(canPlant(flowerbed, prev + i) + canPlant(flowerbed, i) + canPlant(flowerbed, next + i) === 0){
+      flowerbed[i] = 1;
+      count++;
     }
+    
   }
-  return false;
-};
+  return count >= n
+  
+}
+
+const canPlant = (flowerbed, n) => {
+
+  if(n < 0 || n >= flowerbed.length){
+    return 0;
+  }
+
+  return flowerbed[n];
+}
+
+console.log(osarai([1, 0], 1))
